@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PDF Viewer</title>
-    <script src="https://github.com/mohammadmallahy00/cafe-vadash-menu/blob/main/pdfjs/pdf.mjs"></script> <!-- این مسیر به محل آپلود فایل PDF.js اشاره دارد -->
+    <script src="https://github.com/mohammadmallahy00/cafe-vadash-menu/raw/main/pdfjs/pdf.mjs"></script> <!-- این مسیر به محل آپلود فایل PDF.js اشاره دارد -->
 </head>
 <body>
     <div>
@@ -12,7 +12,7 @@
     </div>
 
     <script>
-        var url = 'https://github.com/mohammadmallahy00/cafe-vadash-menu/blob/main/menu.pdf';  // مسیر فایل PDF شما در مخزن
+        var url = 'https://github.com/mohammadmallahy00/cafe-vadash-menu/raw/main/menu.pdf';  // مسیر فایل PDF شما در مخزن
 
         var loadingTask = pdfjsLib.getDocument(url);
         loadingTask.promise.then(function(pdf) {
