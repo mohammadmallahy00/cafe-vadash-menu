@@ -1,11 +1,37 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منوی کافه واداش</title>
+    <title>PDF Viewer</title>
+    <script src="/pdfjs/pdf.js"></script> <!-- این مسیر به محل آپلود فایل PDF.js اشاره دارد -->
 </head>
 <body>
-    <embed src="https://github.com/mohammadmallahy00/cafe-vadash-menu/raw/main/menu.pdf" type="application/pdf" />
+    <div>
+        <canvas id="pdf-canvas"></canvas>
+    </div>
+
+    <script>
+        var url = '/path-to-your-pdf-file.pdf';  // مسیر فایل PDF شما در مخزن
+
+        var loadingTask = pdfjsLib.getDocument(url);
+        loadingTask.promise.then(function(pdf) {
+            pdf.getPage(1).then(function(page) {
+                var scale = 1.5;
+                var viewport = page.getViewport({ scale: scale });
+
+                var canvas = document.getElementById('pdf-canvas');
+                var context = canvas.getContext('2d');
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+
+                var renderContext = {
+                    canvasContext: context,
+                    viewport: viewport
+                };
+                page.render(renderContext);
+            });
+        });
+    </script>
 </body>
 </html>
